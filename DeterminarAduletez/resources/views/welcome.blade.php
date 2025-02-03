@@ -9,29 +9,39 @@
 </head>
 <body>
 
-<div class="container mt-5">
-    <h2>Formulario para determinar si es mayor de edad</h2>
-    
-    <!-- Formulario para calcular la edad -->
-    <form action="{{ route('calculateMajorityOld') }}" method="POST">
+    <div class="container mt-5">
+        <h2>Formulario para determinar si es mayor de edad</h2>
+        
+        <!-- Formulario para calcular la edad -->
+        <form action="{{ route('calculateMajorityOld') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
+            @error('name')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
-        
+
         <div class="mb-3">
             <label for="lastName" class="form-label">Apellido</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" required>
+            <input type="text" class="form-control" id="lastName" name="lastName" value="{{ old('lastName') }}" required>
+            @error('lastName')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="dateOfBirth" class="form-label">Fecha de Nacimiento</label>
-            <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
+            <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" value="{{ old('dateOfBirth') }}" required>
+            @error('dateOfBirth')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary">Calcular</button>
     </form>
+
 
     <!-- Alerta de resultado -->
     @if(isset($result))

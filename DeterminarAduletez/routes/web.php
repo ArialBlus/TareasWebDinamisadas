@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DeterminarElderly;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('DeterminarElderly', [DeterminarElderly::class, 'index'])->name('elderly');
-Route::post('DeterminarElderly/calculateAge', [DeterminarElderly::class, 'calculateAge'])->name('calculateAge');
-Route::post('DeterminarElderly/calculateMajorityOld', [DeterminarElderly::class, 'calculateMajorityOld'])->name('calculateMajorityOld');
+Route::get('/', [DeterminarElderly::class, 'index']);
+
+Route::get('/', [DeterminarElderly::class, 'index']);
+Route::post('calculateAge', [DeterminarElderly::class, 'calculateAge'])->name('calculateAge');
+Route::post('calculateMajorityOld', [DeterminarElderly::class, 'calculateMajorityOld'])->name('calculateMajorityOld');
 
